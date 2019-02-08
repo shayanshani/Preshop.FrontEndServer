@@ -20,6 +20,7 @@
             url: '@Url.Action("GetSaleProducts", "Home")',
             success: function (data) {
                 $('#DivSaleProductsOwlcarouselTop').html(data);
+                initOwlcarousel('#DivSaleProductsOwlcarouselTop');
             }
         });
     }
