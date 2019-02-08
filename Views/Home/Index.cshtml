@@ -9,16 +9,43 @@
                 url: '@Url.Action("GetProducts", "Home")',
                 success: function (data) {
                     $('#DivProductsOwlcarouselTop').html(data);
+                    initOwlcarousel('#DivProductsOwlcarouselTop');
                 }
             });
         });
     function GetSaleProducts() {
         $.ajax({
             type: "GET",
-            dataType: 'html',
+            dataType: 'json',
             url: '@Url.Action("GetSaleProducts", "Home")',
             success: function (data) {
                 $('#DivSaleProductsOwlcarouselTop').html(data);
+            }
+        });
+    }
+    function initOwlcarousel(DivId) {
+        $(DivId).owlCarousel({
+            autoplay: true,
+            autoplayTimeout: 8000,
+            rewind: true,
+            items: 4,
+            nav: true,
+            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                576: {
+                    items: 2,
+                },
+                992: {
+                    items: 3,
+                },
+                1200: {
+                    items: 4,
+                },
+
             }
         });
     }
@@ -57,7 +84,6 @@
     </div>
 </div>
 <!--slider area end-->
-
 <!--shipping area start-->
 <div class="shipping_area">
     <div class="container">
@@ -101,7 +127,6 @@
     </div>
 </div>
 <!--shipping area end-->
-
 <!--product area start-->
 <div class="produtc_area">
     <div class="container">

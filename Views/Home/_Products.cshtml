@@ -6,47 +6,47 @@
     {
         foreach (var product in products)
         {
-            <div class="owl-item">
-                <div class="col-lg-3">
-                    <div class="single_product">
-                        <div class="product_thumb">
-                            <a href="#">
-                                <img id="pImg_@product.ProductID" style="height: 248px!important;width: 248px!important;" src="@product.Image" onerror="this.src='/assets/img/product/product18.jpg'" alt="">
-                            </a>
-                            <div class="btn_quickview">
-                                <a href="#" data-toggle="modal" onclick="GetProductDetail(@product.ProductID)" data-target="#modal_box" title="Quick View"><i class="ion-ios-eye"></i></a>
-                            </div>
+
+            <div class="col-lg-3">
+                <div class="single_product">
+                    <div class="product_thumb">
+                        <a href="#">
+                            <img id="pImg_@product.ProductID" style="height: 248px!important;width: 248px!important;" src="@product.Image" onerror="this.src='/assets/img/product/product18.jpg'" alt="">
+                        </a>
+                        <div class="btn_quickview">
+                            <a href="#" data-toggle="modal" onclick="GetProductDetail(@product.ProductID)" data-target="#modal_box" title="Quick View"><i class="ion-ios-eye"></i></a>
                         </div>
-                        <div class="product_content">
-                            <div class="product_ratting">
-                                <ul>
-                                    <li><a href="#"><i class="ion-star"></i></a></li>
-                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
-                                </ul>
-                            </div>
-                            <h3><a href="#">@product.Product</a></h3>
-                            <div class="product_price">
-                                <span class="current_price">@Helper.SpartansHelper.FormatCurrencyDisplay(product.Price.ToString())</span>
-                            </div>
-                            <div class="product_action">
-                                <ul>
-                                    @{
-                                        string showCart = !product.IsBooking ? "hidden" : "visible";
-                                    }
-                                    <li class="product_cart" style="visibility:@showCart">
-                                        <a href="javascript:void(0);" class="AddToCartButton" onclick="AddToCart(@product.ProductID,@product.Price,1);" title="Add to Cart">Add to Cart</a>
-                                    </li>
-                                    <li class="add_links"><a href="#" title="Add to Wishlist"><i class="ion-ios-heart-outline"></i></a></li>
-                                    <li class="add_links"><a href="#" title="Add to Compare"><i class="ion-loop"></i></a></li>
-                                </ul>
-                            </div>
+                    </div>
+                    <div class="product_content">
+                        <div class="product_ratting">
+                            <ul>
+                                <li><a href="#"><i class="ion-star"></i></a></li>
+                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                            </ul>
+                        </div>
+                        <h3><a href="#">@product.Product</a></h3>
+                        <div class="product_price">
+                            <span class="current_price">@Helper.SpartansHelper.FormatCurrencyDisplay(product.Price.ToString())</span>
+                        </div>
+                        <div class="product_action">
+                            <ul>
+                                @{
+                                    string showCart = !product.IsBooking ? "hidden" : "visible";
+                                }
+                                <li class="product_cart" style="visibility:@showCart">
+                                    <a href="javascript:void(0);" class="AddToCartButton" onclick="AddToCart(@product.ProductID,@product.Price,1);" title="Add to Cart">Add to Cart</a>
+                                </li>
+                                <li class="add_links"><a href="#" title="Add to Wishlist"><i class="ion-ios-heart-outline"></i></a></li>
+                                <li class="add_links"><a href="#" title="Add to Compare"><i class="ion-loop"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
+
         }
     }
 }
