@@ -11,6 +11,31 @@
         margin-bottom: 15px !important;
         text-align: center !important;
     }
+
+    .bootstrap-filestyle.input-group {
+        z-index: 1 !important;
+    }
+
+    /*.buttonText {
+            color: transparent !important;
+        }*/
+
+    label.btn.btn.btn-success.btn-sm {
+        background: #2971f5 !important;
+        border: 1px solid #2971f5 !important;
+        color: #FFF !important;
+        line-height: 45px !important;
+        height: 47px;
+    }
+
+        label.btn.btn.btn-success.btn-sm:hover {
+            background: #444444 !important;
+        }
+
+    .btn-success .badge {
+        background: #fff !important;
+        color: #f44336 !important;
+    }
 </style>
 <!--breadcrumbs area start-->
 <div class="breadcrumbs_area commun_bread">
@@ -51,8 +76,8 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <label>Logo:</label>
-                                <input type="file" name="flvLogo" style="border:0px!important" />
+                                <label></label>
+                                <input type="file" name="flvLogo" class="FileUploadLogo" style="border:0px!important" />
                                 @Html.ValidationMessageFor(m => m.Logo, null, new { style = "color:red" })
                             </div>
                         </div>

@@ -594,10 +594,16 @@
         </div>
     </div>
     <!--news letter popup start-->
-
+    @Scripts.Render("~/Scripts/Validation")
     @Scripts.Render("~/assets/javascripts")
     @RenderSection("scripts", required: false)
     <script>
+        $('.FileUploadLogo').filestyle({
+            input: false,
+            buttonName: 'btn btn-success btn-sm',
+            iconName: 'fa fa-upload',
+            buttonText: 'Upload Logo'
+        });
         function initOwlcarousel(DivId) {
             $(DivId).owlCarousel({
                 autoplay: true,
