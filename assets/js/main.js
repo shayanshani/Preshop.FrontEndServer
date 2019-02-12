@@ -49,32 +49,32 @@
 
 
     /* categorie banner activation */
-    $('.categorie_banner_active').owlCarousel({
-        autoplay: true,
-        loop: true,
-        nav: true,
-        autoplay: false,
-        autoplayTimeout: 8000,
-        items: 4,
-        dots: false,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            576: {
-                items: 2,
-            },
-            992: {
-                items: 3,
-            },
-            1200: {
-                items: 4,
-            },
+    //$('.categorie_banner_active').owlCarousel({
+    //    autoplay: true,
+    //    loop: true,
+    //    nav: true,
+    //    autoplay: false,
+    //    autoplayTimeout: 8000,
+    //    items: 4,
+    //    dots: false,
+    //    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+    //    responsiveClass: true,
+    //    responsive: {
+    //        0: {
+    //            items: 1,
+    //        },
+    //        576: {
+    //            items: 2,
+    //        },
+    //        992: {
+    //            items: 3,
+    //        },
+    //        1200: {
+    //            items: 4,
+    //        },
 
-        }
-    });
+    //    }
+    //});
 
     /* top categorie banner activation */
     $('.top_categorie_active').owlCarousel({

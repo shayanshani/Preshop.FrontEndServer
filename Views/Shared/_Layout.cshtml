@@ -7,6 +7,7 @@
     @Styles.Render("~/assets/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/assets/jquery_1_12_0")
+    @Html.AntiForgeryToken()
 </head>
 <body>
     <!--header area start-->
@@ -643,6 +644,10 @@
             $.ajax({
                 type: "GET",
                 dataType: 'html',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("XSRF-TOKEN",
+                        $('input:hidden[name="__RequestVerificationToken"]').val());
+                },
                 url: '@Url.Action("GetCategories","Home")',
                 success: function (data) {
                     var result = data;
@@ -651,13 +656,17 @@
             });
         });
 
-        function GetProductDetail(ProductId) {
+        function GetProductDetail(ProductId,PartialViewName) {
          $.ajax({
-                type: "GET",
-                dataType: 'html',
-                url: '@Url.Action("GetProductById", "Home")',
-                data: { Id: ProductId },
-                success: function (data) {
+             type: "GET",
+             dataType: 'html',
+             beforeSend: function (xhr) {
+                 xhr.setRequestHeader("XSRF-TOKEN",
+                     $('input:hidden[name="__RequestVerificationToken"]').val());
+             },
+             url: '@Url.Action("GetProductById", "Home")',
+             data: { Id: ProductId, PartialViewName: PartialViewName },
+             success: function (data) {
                     $('#ProductContent').html(data);
                 }
             });
@@ -671,11 +680,20 @@
                 flytoCart = false;
                 Qty = $('#txtProductQtyPopUp').val();
             }
+            else if (Qty == -1)
+            {
+                flytoCart = true;
+                Qty = $('#txtProductQty').val();
+            }
             else
                 flytoCart = true;
          $.ajax({
              type: "POST",
              contentType: "application/json; charset=utf-8",
+             beforeSend: function (xhr) {
+                 xhr.setRequestHeader("XSRF-TOKEN",
+                     $('input:hidden[name="__RequestVerificationToken"]').val());
+             },
                 url: '@Url.Action("AddToCart", "Home")',
                 data: '{ProductID: ' + ProductId + ',Price: ' + Price + ',Qty: ' + Qty + '}',
                 success: function (data) {
@@ -722,7 +740,6 @@
             }
             return false;
         }
-
     </script>
 </body>
 </html>

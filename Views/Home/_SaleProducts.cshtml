@@ -9,9 +9,11 @@
             <div class="col-lg-3">
                 <div class="single_product">
                     <div class="product_thumb">
-                        <a href="#"><img src="Stores.thepreshop.com/@product.Image" style="height: 248px!important;width: 248px!important;" onerror="this.src='/assets/img/product/product18.jpg'" alt=""></a>
+                        <a href='/ProductDetails/Index?P=@product.ProductID'>
+                            <img id="pImg_@product.ProductID" style="height: 248px!important;width: 248px!important;" src="@product.Image" onerror="this.src='/assets/img/product/product18.jpg'" alt="">
+                        </a>
                         <div class="btn_quickview">
-                            <a href="#" data-toggle="modal" onclick="GetProductDetail(@product.ProductID)" data-target="#modal_box" title="Quick View"><i class="ion-ios-eye"></i></a>
+                            <a href="#" data-toggle="modal" onclick="GetProductDetail(@product.ProductID,'_ProductDetailPopUp')" data-target="#modal_box" title="Quick View"><i class="ion-ios-eye"></i></a>
                         </div>
                     </div>
                     <div class="product_content">

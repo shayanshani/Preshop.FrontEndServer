@@ -3,7 +3,7 @@
     var categories = Model.GetCategories();
     if (categories != null)
     {
-        foreach (var category in categories.GetCategories)
+        foreach (var category in categories.GetCategories.Take(8))
         {
             <li>
                 @*class="categorie_list"*@
