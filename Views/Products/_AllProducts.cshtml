@@ -24,7 +24,15 @@
 </div>
 <!--shop tab product end-->
 <!--pagination style start-->
-@Html.PagedListPager(products, page => Url.Action("Index", "Products", new { page }),
+@Html.PagedListPager(products, page => Url.Action("Index", "Products",
+    new {
+        page,
+        h = ViewBag.h,
+        s = ViewBag.s,
+        c = ViewBag.c,
+        str = ViewBag.str,
+        sr = ViewBag.sr
+    }),
    new PagedListRenderOptions()
    {
        DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,

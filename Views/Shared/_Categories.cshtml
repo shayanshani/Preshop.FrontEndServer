@@ -19,7 +19,7 @@
                             @foreach (var subcategory in subcategories)
                             {
                                 <li>
-                                    <a href='/Products/Index?s=@Helper.Security.Encrypt(subcategory.SubCategoryID.ToString())'>@subcategory.SubCategory</a>
+                                    <a href='/Products/?s=@Helper.Security.Encrypt(subcategory.SubCategoryID.ToString())'>@subcategory.SubCategory</a>
                                     @{
                                         var Headings = categories.GetHeadings.Where(h => h.SubCategoryId == subcategory.SubCategoryID).Take(4);
                                         if (Headings.Count() > 0)
@@ -28,7 +28,7 @@
                                                 <ul>
                                                     @foreach (var heading in Headings)
                                                     {
-                                                        <li><a href='/Products/Index?h=@Helper.Security.Encrypt(subcategory.CategoryID.ToString())'>@heading.Heading</a></li>
+                                                        <li><a href='/Products/?h=@Helper.Security.Encrypt(subcategory.CategoryID.ToString())'>@heading.Heading</a></li>
                                                     }
                                                 </ul>
                                             </div>
