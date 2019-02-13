@@ -10,7 +10,7 @@
         $.ajax({
                 type: "GET",
                 dataType: 'html',
-                url: '@Url.Action("GetProducts", "Home")',
+            url: '@Url.Action("GetProducts", "Home")',
                 success: function (data) {
                     var $ProductsDiv = $('#DivProductsOwlcarouselTop');
                     if (data == '')
