@@ -22,7 +22,7 @@
                                         @foreach (var subcategory in subcategories)
                                         {
                                             <li>
-                                                <a href="#">@subcategory.SubCategory</a>
+                                                <a href='@Url.Action("Index","Products",new {s=Helper.Security.Encrypt(subcategory.SubCategoryID.ToString()) })'>@subcategory.SubCategory</a>
                                             </li>
                                         }
                                             <li><a href="#">See More</a></li>

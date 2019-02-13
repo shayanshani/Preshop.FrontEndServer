@@ -320,35 +320,35 @@
     });
 
 
-    /* brand_active activation */
-    $('.brand_active').owlCarousel({
-        autoplay: true,
-        loop: true,
-        nav: false,
-        autoplay: false,
-        autoplayTimeout: 8000,
-        items: 5,
-        dots: false,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            480: {
-                items: 2,
-            },
-            768: {
-                items: 3,
-            },
-            992: {
-                items: 4,
-            },
-            1200: {
-                items: 5,
-            },
+    ///* brand_active activation */
+    //$('.brand_active').owlCarousel({
+    //    autoplay: true,
+    //    loop: true,
+    //    nav: false,
+    //    autoplay: false,
+    //    autoplayTimeout: 8000,
+    //    items: 5,
+    //    dots: false,
+    //    responsiveClass: true,
+    //    responsive: {
+    //        0: {
+    //            items: 1,
+    //        },
+    //        480: {
+    //            items: 2,
+    //        },
+    //        768: {
+    //            items: 3,
+    //        },
+    //        992: {
+    //            items: 4,
+    //        },
+    //        1200: {
+    //            items: 5,
+    //        },
 
-        }
-    });
+    //    }
+    //});
 
     /* brand active four activation */
     $('.brand_active_four').owlCarousel({
