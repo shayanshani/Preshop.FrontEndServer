@@ -585,7 +585,7 @@
 
 
     /*niceSelect*/
-    $('select').niceSelect();
+   // $('select').niceSelect();
 
 
     /*magnificPopup activation*/

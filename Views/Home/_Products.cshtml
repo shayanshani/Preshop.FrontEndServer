@@ -10,7 +10,7 @@
             <div class="col-lg-3">
                 <div class="single_product">
                     <div class="product_thumb">
-                        <a href='/ProductDetails/Index?P=@product.ProductID'>
+                        <a href='/ProductDetails/Index?P=@Helper.Security.Encrypt(product.ProductID.ToString())'>
                             <img id="pImg_@product.ProductID" style="height: 248px!important;width: 248px!important;" src="@product.Image" onerror="this.src='/assets/img/product/product18.jpg'" alt="">
                         </a>
                         <div class="btn_quickview">
@@ -27,7 +27,7 @@
                                 <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
                             </ul>
                         </div>
-                        <h3><a href="#">@product.Product</a></h3>
+                        <h3><a href='/ProductDetails/Index?P=@Helper.Security.Encrypt(product.ProductID.ToString())'>@product.Product</a></h3>
                         <div class="product_price">
                             <span class="current_price">@Helper.SpartansHelper.FormatCurrencyDisplay(product.Price.ToString())</span>
                         </div>
