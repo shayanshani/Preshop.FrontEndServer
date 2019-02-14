@@ -511,30 +511,7 @@
         </div>
     </div>
     <!-- modal area start-->
-    <!--news letter popup start-->
-    <div class="newsletter_popup">
-        <div class="popup_container">
-            <div class="popup_close">
-                <span>close</span>
-            </div>
-            <div class="popup_text">
-                <h2>Subscribe to our Newsletter</h2>
-                <p>Subscribe to the Pebona mailing list to receive updates on new arrivals, special offers and other discount information.</p>
-                <form action="#">
-                    <input placeholder="Enter your email address" type="text">
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-            <div class="popup_footer">
-                <form action="#">
-                    <input id="check_newsletter" class="form_check" type="checkbox">
-                    <span class="checkmark"></span>
-                    <label class="form_check" for="check_newsletter">Don't show this popup again</label>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!--news letter popup start-->
+
     @Scripts.Render("~/Scripts/Validation")
     @Scripts.Render("~/assets/javascripts")
     @RenderSection("scripts", required: false)
@@ -571,7 +548,24 @@
                 }
             });
         }
-
+        function initOwlcarouselHomeBottom() {
+            $('.custom_product_active').owlCarousel({
+                autoplay: true,
+                loop: true,
+                nav: true,
+                autoplay: false,
+                autoplayTimeout: 8000,
+                items: 1,
+                dots: false,
+                navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                }
+            });
+        }
         $(function () {
             BindStore();
             $('.AddToCartButton').click(function (e) {
