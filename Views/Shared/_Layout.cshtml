@@ -13,6 +13,24 @@
             border: 0;
             margin: auto;
         }
+
+        .mini_cart::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+        }
+
+        .mini_cart::-webkit-scrollbar {
+            width: 7px;
+            background-color: #F5F5F5;
+        }
+
+        .mini_cart::-webkit-scrollbar-thumb:hover {
+            background-color: #2971f5;
+        }
+
+        .mini_cart::-webkit-scrollbar-thumb {
+            background-color: #444444;
+        }
     </style>
     @Html.AntiForgeryToken()
 </head>
@@ -81,44 +99,9 @@
                             </div>
                             <div class="cart_link">
                                 <a href="#"><i id="cartIcon" class="ion-ios-cart-outline"></i>My Cart</a>
-                                <span class="cart_count">2</span>
-                                <!--mini cart-->
-                                <div class="mini_cart">
-                                    <div class="items_nunber">
-                                        <span>2 Items in Cart</span>
-                                    </div>
-                                    <div class="cart_button checkout">
-                                        <a href="checkout.html">Proceed to Checkout</a>
-                                    </div>
-                                    <div class="cart_item">
-                                        <div class="cart_img">
-                                            <a href="#"><img src="~/assets/img/cart/cart1.jpg" alt=""></a>
-                                        </div>
-                                        <div class="cart_info">
-                                            <a href="#">Mr.Coffee 12-Cup</a>
-                                            <form action="#">
-                                                <input min="0" max="100" type="number">
-                                                <span>$60.00</span>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="cart_item">
-                                        <div class="cart_img">
-                                            <a href="#"><img src="~/assets/img/cart/cart2.jpg" alt=""></a>
-                                        </div>
-                                        <div class="cart_info">
-                                            <a href="#">Lid Cover Cookware</a>
-                                            <form action="#">
-                                                <input min="0" max="100" type="number">
-                                                <span>$160.00</span>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="cart_button view_cart">
-                                        <a href="#">View and Edit Cart</a>
-                                    </div>
+                                <div id="cart">
+
                                 </div>
-                                <!--mini cart end-->
                             </div>
                         </div>
                     </div>
@@ -568,6 +551,7 @@
         }
         $(function () {
             BindStore();
+            BindCart();
             $('.AddToCartButton').click(function (e) {
                 e.preventDefault()
             })
@@ -591,14 +575,10 @@
             });
         });
 
-        function GetProductDetail(ProductId,PartialViewName) {
+    function GetProductDetail(ProductId,PartialViewName) {
          $.ajax({
              type: "GET",
              dataType: 'html',
-             beforeSend: function (xhr) {
-                 xhr.setRequestHeader("XSRF-TOKEN",
-                     $('input:hidden[name="__RequestVerificationToken"]').val());
-             },
              url: '@Url.Action("GetProductById", "Home")',
              data: { Id: ProductId, PartialViewName: PartialViewName },
              success: function (data) {
@@ -624,18 +604,27 @@
                 flytoCart = true;
          $.ajax({
              type: "POST",
-             contentType: "application/json; charset=utf-8",
-             beforeSend: function (xhr) {
-                 xhr.setRequestHeader("XSRF-TOKEN",
-                     $('input:hidden[name="__RequestVerificationToken"]').val());
+             contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+             url: '@Url.Action("AddToCart", "Home")',
+             data: {
+                 ProductID: ProductId,
+                 Price: Price,
+                 Qty: Qty,
+                 __RequestVerificationToken: $('[name="__RequestVerificationToken"]').val()
              },
-                url: '@Url.Action("AddToCart", "Home")',
-                data: '{ProductID: ' + ProductId + ',Price: ' + Price + ',Qty: ' + Qty + '}',
-                success: function (data) {
-                    if (data.d != null) {
-                        if (data.d == "qty")
+             success: function (data) {
+                    if (data != null) {
+                        flytoCart = true;
+                        if (data == "qty") {
+                            flytoCart = false;
                             alert("No more items available for this product");
+                        }
+                        else {
+                            BindCart();
+                        }
                     }
+                    else
+                        flytoCart = false;
                 }
             });
             var imgtodrag = $("#pImg_" + ProductId);
@@ -676,7 +665,23 @@
             return false;
         }
 
-         function BindStore() {
+        function BindCart() {
+        $.ajax({
+                type: "GET",
+                dataType: 'html',
+            url: '@Url.Action("GetCart", "Home")',
+                success: function (data) {
+                    var $cart = $('#cart');
+                    if (data == '')
+                        $cart.html("<div class='items_nunber'><span>Cart is empty</span></div>");
+                        else {
+                        $cart.html(data);
+                    }
+                }
+            });
+    }
+
+     function BindStore() {
         $.ajax({
                 type: "GET",
                 dataType: 'html',
