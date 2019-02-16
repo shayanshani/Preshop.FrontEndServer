@@ -1,17 +1,15 @@
 ﻿@model PreShop.FrontEnd.Helpers.CartHelper.CartHelper
 @{
-
     var items = Model.GetCartItems();
     if (items.Count() > 0)
     {
-        <!--mini cart-->
         <span class="cart_count">@items.Count()</span>
         <div class="mini_cart" style="height:450px;overflow-y:scroll">
             <div class="items_nunber">
                 <span>@items.Count() Items in Cart</span>
             </div>
             <div class="cart_button checkout">
-                <a href="#">Proceed to Checkout</a>
+                <a href='@Url.Action("Index","CheckOut",new { v=Helper.Security.Encrypt("1") })'>Proceed to Checkout</a>
             </div>
             @foreach (var item in items)
             {
@@ -33,7 +31,6 @@
                 <a href="#">View and Edit Cart</a>
             </div>
         </div>
-        <!--mini cart end-->
     }
     else
     {
