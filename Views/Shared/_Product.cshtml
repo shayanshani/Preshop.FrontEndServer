@@ -23,6 +23,13 @@
         <div class="product_price">
             <span class="current_price">@Helper.SpartansHelper.FormatCurrencyDisplay(Model.Price.ToString())</span>
         </div>
+        <div class="available">
+            <div class="available_line d-flex flex-row justify-content-start">
+                <div class="available_title">Available: <span>@Model.CurrentQty</span></div>
+                <div class="sold_title ml-auto">Sold: <span>@Model.SalesQty</span></div>
+            </div>
+            <div class="available_bar"><span style="width:@Model.CurerntStockPercent%"></span></div>
+        </div>
         <div class="product_action">
             <ul>
                 @{
