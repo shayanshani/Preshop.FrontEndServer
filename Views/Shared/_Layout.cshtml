@@ -84,12 +84,7 @@
                     </div>
                     <div class="col-lg-7 col-md-5">
                         <div class="search_bar">
-                            @using (Html.BeginForm("Search", "Home", FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
-                                <input name="SearchText" id="SearchText" placeholder="Search in preshop" type="text">
-                                <button type="submit"><i class="ion-ios-search-strong"></i></button>
-                            }
+                           @Html.Partial("_Search")
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-3">
