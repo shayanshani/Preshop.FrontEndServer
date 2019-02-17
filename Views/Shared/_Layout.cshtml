@@ -31,6 +31,57 @@
         .mini_cart::-webkit-scrollbar-thumb {
             background-color: #444444;
         }
+
+        .ui-autocomplete {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            float: left;
+            display: none;
+            min-width: 160px;
+            _width: 160px;
+            padding: 4px 0;
+            margin: 2px 0 0 0;
+            list-style: none;
+            background-color: #ffffff;
+            border-color: #ccc;
+            border-color: rgba(0, 0, 0, 0.2);
+            border-style: solid;
+            border-width: 1px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            -webkit-background-clip: padding-box;
+            -moz-background-clip: padding;
+            background-clip: padding-box;
+            *border-right-width: 2px;
+            *border-bottom-width: 2px;
+        }
+
+        .ui-menu-item > a.ui-corner-all {
+            display: block;
+            padding: 3px 15px;
+            clear: both;
+            font-weight: normal;
+            line-height: 18px;
+            color: #555555;
+            white-space: nowrap;
+        }
+
+        .ui-state-focus {
+            background: #2971f5!important;
+            color: #ffffff!important;
+            text-decoration: none!important;
+            border:0px!important;
+            border-radius: 0px!important;
+            -webkit-border-radius: 0px!important;
+            -moz-border-radius: 0px!important;
+            background-image: none!important;
+        }
     </style>
     @Html.AntiForgeryToken()
 </head>
@@ -84,7 +135,7 @@
                     </div>
                     <div class="col-lg-7 col-md-5">
                         <div class="search_bar">
-                           @Html.Partial("_Search")
+                            @Html.Partial("_Search")
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-3">
@@ -567,6 +618,33 @@
                     var result = data;
                     $('#ulCategories').html(result);
                 }
+            });
+
+            $("#SearchText").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Home/AutoComplete/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#SearchText").val(i.item.val);
+                },
+                minLength: 1
             });
         });
 
