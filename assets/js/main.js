@@ -144,32 +144,32 @@
 
 
     /* countdown produtc activation */
-    $('.countdown_produtc_active').owlCarousel({
-        autoplay: true,
-        loop: true,
-        nav: true,
-        autoplay: false,
-        autoplayTimeout: 8000,
-        items: 2,
-        dots: false,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            576: {
-                items: 1,
-            },
-            768: {
-                items: 1,
-            },
-            992: {
-                items: 2,
-            },
+    //$('.countdown_produtc_active').owlCarousel({
+    //    autoplay: true,
+    //    loop: true,
+    //    nav: true,
+    //    autoplay: false,
+    //    autoplayTimeout: 8000,
+    //    items: 2,
+    //    dots: false,
+    //    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+    //    responsiveClass: true,
+    //    responsive: {
+    //        0: {
+    //            items: 1,
+    //        },
+    //        576: {
+    //            items: 1,
+    //        },
+    //        768: {
+    //            items: 1,
+    //        },
+    //        992: {
+    //            items: 2,
+    //        },
 
-        }
-    });
+    //    }
+    //});
 
     /* product activation */
     //$('.product_active').owlCarousel({
@@ -606,15 +606,7 @@
 
 
 
-    /*countdown activation*/
-
-    $('[data-countdown]').each(function () {
-        var $this = $(this), finalDate = $(this).data('countdown');
-        $this.countdown(finalDate, function (event) {
-            $this.html(event.strftime('<div class="countdown_area"><div class="single_countdown"><div class="countdown_number">%D</div><div class="countdown_title">days</div></div><div class="single_countdown"><div class="countdown_number">%H</div><div class="countdown_title">hrs</div></div><div class="single_countdown"><div class="countdown_number">%M</div><div class="countdown_title">mins</div></div><div class="single_countdown"><div class="countdown_number">%S</div><div class="countdown_title">secs</div></div></div>'));
-
-        });
-    });
+   
 
     //tooltip
     $('[data-toggle="tooltip"]').tooltip()
