@@ -3,7 +3,7 @@
 <div class="single_product">
     <div class="product_thumb">
         <a href='/ProductDetails/Index?P=@Helper.Security.Encrypt(Model.ProductID.ToString())'>
-            <img id="pImg_@Model.ProductID"  src="@Model.Image" onerror="this.src='/assets/img/product/product18.jpg'" alt="">
+            <img id="pImg_@Model.ProductID"  src="@PreShop.Common.StoreHostName@Model.Image" onerror="this.src='/assets/img/product/product18.jpg'" alt="">
         </a>
     </div>
     <div class="product_content">
