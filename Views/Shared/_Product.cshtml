@@ -23,6 +23,9 @@
         <div class="product_price">
             <span class="current_price">@Helper.SpartansHelper.FormatCurrencyDisplay(Model.Price.ToString())</span>
         </div>
+        <div class="product_description">
+            <p style="font-size:16px"><a title="View all products of this store" href='@Url.Action("Index","Products",new {str=Helper.Security.Encrypt(Model.StoreID.ToString()) })'><i class="fas fa-store-alt"></i>&nbsp;@Model.StoreName</a></p>
+        </div>
         <div class="available">
             <div class="available_line d-flex flex-row justify-content-start">
                 <div class="available_title">Available: <span>@Model.CurrentQty</span></div>
