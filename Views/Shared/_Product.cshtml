@@ -11,13 +11,7 @@
     </div>
     <div class="product_content">
         <div class="product_ratting">
-            <ul>
-                <li><a href="#"><i class="ion-star"></i></a></li>
-                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
-                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
-                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
-                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
-            </ul>
+            <div id="ratingStars_@Model.ProductID"></div>
         </div>
         <h3><a href='/ProductDetails/Index?P=@Helper.Security.Encrypt(Model.ProductID.ToString())'>@Model.Product</a></h3>
         <div class="product_price">
@@ -47,3 +41,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+        $("#ratingStars_@Model.ProductID").rateYo({
+            rating: @Model.Rating > 0 ? @Model.Rating : 0,
+            starWidth: "15px",
+            onSet: function (rating, rateYoInstance) {
+                UpdateRating(@Model.ProductID, rating);
+            }
+        });
+    });
+</script>

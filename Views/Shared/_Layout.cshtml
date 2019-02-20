@@ -84,6 +84,7 @@
             background-image: none !important;
         }
     </style>
+    <link href="~/assets/RateYo/jquery.rateyo.min.css" rel="stylesheet" />
     @Html.AntiForgeryToken()
 </head>
 <body>
@@ -555,6 +556,7 @@
     @Scripts.Render("~/Scripts/Validation")
     @Scripts.Render("~/assets/javascripts")
     @RenderSection("scripts", required: false)
+    <script src="~/assets/RateYo/jquery.rateyo.min.js"></script>
     <script>
         $('.FileUploadLogo').filestyle({
             input: false,
@@ -587,6 +589,7 @@
 
                 }
             });
+
         }
         function initOwlcarouselHomeBottom() {
             $('.custom_product_active').owlCarousel({
@@ -808,6 +811,17 @@
                         $StoreDiv.html(data);
                         initOwlcarousel('#DivStore');
                     }
+                }
+            });
+        }
+
+        function UpdateRating(ProductId,Rating) {
+         $.ajax({
+                type: "POST",
+                 url: '@Url.Action("UpdateRating", "Home")',
+                 data: { ProductID: ProductId, Rating: Rating },
+                 success: function (data) {
+                 console.log("Rating Updated");
                 }
             });
     }
