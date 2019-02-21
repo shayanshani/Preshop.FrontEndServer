@@ -48,7 +48,7 @@
                         <div class="single_portfolio_inner">
                             <div class="portfolio_thumb">
                                 <a href='@Url.Action("Index","Products",new {str=Helper.Security.Encrypt(store.StoreID.ToString()) })'>
-                                    <img src='@Helper.SpartansHelper.GetHostName()@store.Logo' alt="" onerror="this.src='/assets/img/brand/bra2.png'">
+                                    <img src='@Helper.SpartansHelper.GetHostName()@store.Logo' style="height:210px" alt="" onerror="this.src='/assets/img/brand/bra2.png'">
                                 </a>
                                 <div class="portfolio_popup" style="display:none">
                                     <a class="port_popup" href='@Helper.SpartansHelper.GetHostName()@store.Logo'><i class="fa fa-search"></i></a>
