@@ -48,33 +48,7 @@
     });
 
 
-    /* categorie banner activation */
-    //$('.categorie_banner_active').owlCarousel({
-    //    autoplay: true,
-    //    loop: true,
-    //    nav: true,
-    //    autoplay: false,
-    //    autoplayTimeout: 8000,
-    //    items: 4,
-    //    dots: false,
-    //    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-    //    responsiveClass: true,
-    //    responsive: {
-    //        0: {
-    //            items: 1,
-    //        },
-    //        576: {
-    //            items: 2,
-    //        },
-    //        992: {
-    //            items: 3,
-    //        },
-    //        1200: {
-    //            items: 4,
-    //        },
-
-    //    }
-    //});
+  
 
     /* top categorie banner activation */
     $('.top_categorie_active').owlCarousel({
@@ -143,62 +117,7 @@
     });
 
 
-    /* countdown produtc activation */
-    //$('.countdown_produtc_active').owlCarousel({
-    //    autoplay: true,
-    //    loop: true,
-    //    nav: true,
-    //    autoplay: false,
-    //    autoplayTimeout: 8000,
-    //    items: 2,
-    //    dots: false,
-    //    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-    //    responsiveClass: true,
-    //    responsive: {
-    //        0: {
-    //            items: 1,
-    //        },
-    //        576: {
-    //            items: 1,
-    //        },
-    //        768: {
-    //            items: 1,
-    //        },
-    //        992: {
-    //            items: 2,
-    //        },
-
-    //    }
-    //});
-
-    /* product activation */
-    //$('.product_active').owlCarousel({
-    //    autoplay: true,
-    //    loop: false,
-    //    rewind: true,
-    //    nav: true,
-    //    autoplay: false,
-    //    autoplayTimeout: 8000,
-    //    items: 4,
-    //    dots: false,
-    //    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-    //    responsiveClass: true,
-    //    responsive: {
-    //        0: {
-    //            items: 1,
-    //        },
-    //        576: {
-    //            items: 2,
-    //        },
-    //        992: {
-    //            items: 3,
-    //        },
-    //        1200: {
-    //            items: 4,
-    //        },
-
-    //    }
-    //});
+    
 
   
     /* product four activation */
@@ -298,57 +217,6 @@
 
         }
     });
-
-
-    ///* custom product activation */
-    //$('.custom_product_active').owlCarousel({
-    //    autoplay: true,
-    //    loop: true,
-    //    nav: true,
-    //    autoplay: false,
-    //    autoplayTimeout: 8000,
-    //    items: 1,
-    //    dots: false,
-    //    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-    //    responsiveClass: true,
-    //    responsive: {
-    //        0: {
-    //            items: 1,
-    //        },
-
-    //    }
-    //});
-
-
-    ///* brand_active activation */
-    //$('.brand_active').owlCarousel({
-    //    autoplay: true,
-    //    loop: true,
-    //    nav: false,
-    //    autoplay: false,
-    //    autoplayTimeout: 8000,
-    //    items: 5,
-    //    dots: false,
-    //    responsiveClass: true,
-    //    responsive: {
-    //        0: {
-    //            items: 1,
-    //        },
-    //        480: {
-    //            items: 2,
-    //        },
-    //        768: {
-    //            items: 3,
-    //        },
-    //        992: {
-    //            items: 4,
-    //        },
-    //        1200: {
-    //            items: 5,
-    //        },
-
-    //    }
-    //});
 
     /* brand active four activation */
     $('.brand_active_four').owlCarousel({
@@ -674,13 +542,4 @@
 
     // Newsletter Popup
 
-    function newsLetterPopup() {
-        $('.newsletter_popup').css({ "opacity": "1", "visibility": "visible" });
-        $('.popup_close').on('click', function () {
-            $(".newsletter_popup").fadeOut(200);
-        })
-    }
-    if ($.cookie("disablePopup") == null) {
-        newsLetterPopup();
-    }
 })(jQuery);

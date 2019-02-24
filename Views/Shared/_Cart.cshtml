@@ -1,4 +1,5 @@
-﻿@model PreShop.FrontEnd.Helpers.CartHelper.CartHelper
+﻿@using Helper;
+@model PreShop.FrontEnd.Helpers.CartHelper.CartHelper
 @{
     var items = Model.GetCartItems();
     if (items.Count() > 0)
@@ -20,7 +21,10 @@
                     <div class="cart_info">
                         <a href="#">@item.Product</a>
                         <form>
-                            <span>@Helper.SpartansHelper.FormatCurrencyDisplay(item.Price.ToString()) &nbsp; X &nbsp; @item.Qty</span>
+                            @{
+                                string unit = !item.Unit.IsNull() ? "/" + item.Unit : "";
+                            }
+                            <span>@Helper.SpartansHelper.FormatCurrencyDisplay(item.Price.ToString())@unit &nbsp; X &nbsp; @item.Qty</span>
                         </form>
                         <span style="float:right">= @Helper.SpartansHelper.FormatCurrencyDisplay(item.ItemTotal.ToString())</span>
                     </div>

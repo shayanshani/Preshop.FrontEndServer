@@ -1,4 +1,5 @@
-﻿@model PreShop.FrontEnd.Models.Custom.ProductModel
+﻿@using Helper;
+@model PreShop.FrontEnd.Models.Custom.ProductModel
 
 <div class="modal_body">
     <div class="container">
@@ -20,7 +21,10 @@
                         <h2>@Model.Product</h2>
                     </div>
                     <div class="modal_price mb-10">
-                        <span class="new_price">@Helper.SpartansHelper.FormatCurrencyDisplay(Model.Price.ToString())</span>
+                        @{
+                            string unit = !Model.Unit.IsNull() ? "/" + Model.Unit : "";
+                        }
+                        <span class="new_price">@Helper.SpartansHelper.FormatCurrencyDisplay(Model.Price.ToString())@unit</span>
                         @*<span class="old_price">$78.99</span>*@
                     </div>
                     @{

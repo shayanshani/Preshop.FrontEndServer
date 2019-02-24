@@ -1,8 +1,9 @@
-﻿@model PreShop.FrontEnd.Models.Custom.ProductModel
+﻿@using Helper;
+@model PreShop.FrontEnd.Models.Custom.ProductModel
 
 <div class="single_product">
     <div class="product_thumb">
-        <a href='/ProductDetails/Index?P=@Helper.Security.Encrypt(Model.ProductID.ToString())'>
+        <a href='@Url.Action("Index", "ProductDetails", new { P = Helper.Security.Encrypt(Model.ProductID.ToString()) })'>
             <img id="pImg_@Model.ProductID" style="height: 248px!important;width: 248px!important;" src="@PreShop.Common.StoreHostName@Model.Image" onerror="this.src='/assets/img/product/product18.jpg'" alt="">
         </a>
         <div class="btn_quickview">
@@ -13,9 +14,12 @@
         <div class="product_ratting">
             <div id="ratingStars_@Model.ProductID"></div>
         </div>
-        <h3><a href='/ProductDetails/Index?P=@Helper.Security.Encrypt(Model.ProductID.ToString())'>@Model.Product</a></h3>
+        <h3><a href='@Url.Action("Index", "ProductDetails", new { P = Helper.Security.Encrypt(Model.ProductID.ToString()) })'>@Model.Product</a></h3>
         <div class="product_price">
-            <span class="current_price">@Helper.SpartansHelper.FormatCurrencyDisplay(Model.Price.ToString())</span>
+            @{
+                string unit =!Model.Unit.IsNull() ? "/" + Model.Unit : "";
+            }
+            <span class="current_price">@Helper.SpartansHelper.FormatCurrencyDisplay(Model.Price.ToString())@unit</span>
         </div>
         <div class="product_description">
             <p style="font-size:16px"><a title="View all products of this store" href='@Url.Action("Index","Products",new {str=Helper.Security.Encrypt(Model.StoreID.ToString()) })'><i class="fas fa-store-alt"></i>&nbsp;@Model.StoreName</a></p>
@@ -48,7 +52,8 @@
             rating: @Model.Rating > 0 ? @Model.Rating : 0,
             starWidth: "15px",
             onSet: function (rating, rateYoInstance) {
-                UpdateRating(@Model.ProductID, rating);
+               // UpdateRating(@Model.ProductID, rating);
+                OpenPopUp("RatingPopup");
             }
         });
     });

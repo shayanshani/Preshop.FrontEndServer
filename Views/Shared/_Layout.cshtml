@@ -86,6 +86,16 @@
     </style>
     <link href="~/assets/RateYo/jquery.rateyo.min.css" rel="stylesheet" />
     @Html.AntiForgeryToken()
+    <script>
+
+        function OpenPopUp(PopUpID) {
+            $('#' + PopUpID).css({ "opacity": "1", "visibility": "visible" });
+            $('.popup_close').on('click', function () {
+                $('#' + PopUpID).fadeOut(200);
+            })
+        }
+        
+    </script>
 </head>
 <body>
     <!--header area start-->
@@ -545,6 +555,28 @@
         </div>
     </div>
     <!--footer area end-->
+    <div class="newsletter_popup" id="RatingPopup">
+        <div class="popup_container">
+            <div class="popup_close">
+                <span>close</span>
+            </div>
+            <div class="popup_text">
+                <h2>Rate this product</h2>
+                <p>Subscribe to the Pebona mailing list to receive updates on new arrivals, special offers and other discount information.</p>
+                <form action="#">
+                    <input placeholder="Enter your email address" type="text">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            <div class="popup_footer">
+                <form action="#">
+                    <input id="check_newsletter" class="form_check" type="checkbox">
+                    <span class="checkmark"></span>
+                    <label class="form_check" for="check_newsletter">Don't show this popup again</label>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- modal area start-->
     <div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -660,7 +692,7 @@
             })
             $('#check_newsletter').click(function () {
                 $.cookie("disablePopup", "1");
-                $(".newsletter_popup").fadeOut(200);
+                $("#SubscribePopup").fadeOut(200);
                // $.cookie("example", "foo", { expires: 7 }); // Sample 2
             });
             $.ajax({
@@ -697,6 +729,9 @@
                 },
                 minLength: 1
             });
+            if ($.cookie("disablePopup") == null) {
+                OpenPopUp("SubscribePopup");
+            }
         });
 
     function GetProductDetail(ProductId,PartialViewName) {
