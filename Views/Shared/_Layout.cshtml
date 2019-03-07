@@ -83,6 +83,45 @@
             -moz-border-radius: 0px !important;
             background-image: none !important;
         }
+        .pos_rel {
+            position: relative;
+            float: left;
+        }
+
+        .counter {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 15px;
+            height: 20px;
+            display: none;
+            line-height: 12px;
+            text-align: center;
+            margin-top: -10px;
+            min-width: 20px;
+            padding: 5px;
+            position: absolute;
+            right: -36px;
+            top: 50%;
+        }
+
+        .pos_rel:hover .counter {
+            display: block;
+        }
+
+
+        .counter:before {
+            border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+            border-style: solid;
+            border-width: 5px 5px 5px 0;
+            content: "";
+            display: block;
+            height: 0;
+            left: -10px;
+            margin-top: -5px;
+            position: relative;
+            top: 50%;
+            width: 0;
+        }
     </style>
     <link href="~/assets/RateYo/jquery.rateyo.min.css" rel="stylesheet" />
     @Html.AntiForgeryToken()
@@ -91,10 +130,10 @@
         function OpenPopUp(PopUpID) {
             $('#' + PopUpID).css({ "opacity": "1", "visibility": "visible" });
             $('.popup_close').on('click', function () {
-                $('#' + PopUpID).fadeOut(200);
+                $('#' + PopUpID).css({ "opacity": "0", "visibility": "hidden" });
             })
         }
-        
+
     </script>
 </head>
 <body>
@@ -274,7 +313,7 @@
                                 <span class="pe-7s-call"></span>
                             </div>
                             <div class="shipping_content">
-                                <h3>(999) 1234 56789</h3>
+                                <h3>+923347214291</h3>
                                 <p>Free support line!</p>
                             </div>
                         </div>
@@ -285,7 +324,7 @@
                                 <span class="pe-7s-mail"></span>
                             </div>
                             <div class="shipping_content">
-                                <h3>Support@plazathemes.com</h3>
+                                <h3>@PreShop.Common.AdminContactEmail</h3>
                                 <p>Orders Support!</p>
                             </div>
                         </div>
@@ -342,9 +381,9 @@
                             </div>
                             <div class="footer_contact">
                                 <ul>
-                                    <li><i class="ion-location"></i> Ullenhall, Henley-in-Arden B578 5CC, England</li>
-                                    <li><i class="ion-ios-telephone"></i> +123.456.789 - +123.456.678/li>
-                                    <li><i class="ion-ios-email"></i> <a href="#">support@plazathemes.com</a></li>
+                                    <li><i class="ion-location"></i> Ashiyana Shopping Center,3rd floor Office no 6, Dera ismail khan</li>
+                                    <li><i class="ion-ios-telephone"></i> +923347214291</li>
+                                    <li><i class="ion-ios-email"></i> <a href="#">@PreShop.Common.AdminContactEmail</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -353,7 +392,7 @@
                         <div class="single_footer">
                             <h3>CUSTOMER SERVICE</h3>
                             <ul>
-                                <li><a href="#">Contact Us</a></li>
+                                <li> @Html.ActionLink("Contact Us", "Index", "ContactUs")</li>
                                 <li><a href="#">Returns</a></li>
                                 <li><a href="#">Order History</a></li>
                                 <li><a href="#">Site Map</a></li>
@@ -366,7 +405,7 @@
                         <div class="single_footer">
                             <h3>Information</h3>
                             <ul>
-                                <li><a href="#">About Us</a></li>
+                                <li>@Html.ActionLink("About Us", "Index", "AboutUs")</li>
                                 <li><a href="#">Delivery Information</a></li>
                                 <li><a href="#">Privacy Policy</a></li>
                                 <li><a href="#">Terms & Conditions</a></li>
@@ -493,58 +532,16 @@
                     </div>
                 </div>
             </div>
-            <div class="footer_bottom">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="tag_block">
-                            <ul>
-                                <li><a href="#">Online Shopping</a></li>
-                                <li><a href="#">Promotions</a></li>
-                                <li><a href="#">My Orders</a></li>
-                                <li><a href="#">Help</a></li>
-                                <li><a href="#">Customer Service</a></li>
-                                <li><a href="#">Discount</a></li>
-                                <li><a href="#">Support</a></li>
-                                <li><a href="#">Most Populars</a></li>
-                                <li><a href="#">New Arrivals</a></li>
-                                <li><a href="#">Special Products</a></li>
-                                <li><a href="#">Manufacturers</a></li>
-                                <li><a href="#">Our Stores</a></li>
-                                <li><a href="#">Shipping</a></li>
-                                <li><a href="#">Payments</a></li>
-                                <li><a href="#">Warantee</a></li>
-                                <li><a href="#">Refunds</a></li>
-                                <li><a href="#">Checkout</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Policy</a></li>
-                                <li><a href="#">Shipping</a></li>
-                                <li><a href="#">Payments</a></li>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="#">Refunds</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer_social">
-                            <ul>
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-pinterest"></i></a></li>
-                                <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="copyright_area">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
                         <div class="copyright_content">
-                            <p>Copyright &copy; 2018, <a href="#">Cigar</a>. All Rights Reserved</p>
+                            <p>Copyright &copy; @DateTime.Now.Year, <a href="#">PreShop</a>. All Rights Reserved</p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-6 col-md-6" style="display:none">
                         <div class="footer-payment text-right">
                             <a href="#"><img src="~/assets/img/visha/payment.png" alt=""></a>
                         </div>
@@ -563,17 +560,7 @@
             <div class="popup_text">
                 <h2>Rate this product</h2>
                 <p>Subscribe to the Pebona mailing list to receive updates on new arrivals, special offers and other discount information.</p>
-                <form action="#">
-                    <input placeholder="Enter your email address" type="text">
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-            <div class="popup_footer">
-                <form action="#">
-                    <input id="check_newsletter" class="form_check" type="checkbox">
-                    <span class="checkmark"></span>
-                    <label class="form_check" for="check_newsletter">Don't show this popup again</label>
-                </form>
+                @Html.Partial("_RateProduct", new PreShop.BL.TblProdcutRating())
             </div>
         </div>
     </div>
@@ -729,9 +716,9 @@
                 },
                 minLength: 1
             });
-            if ($.cookie("disablePopup") == null) {
-                OpenPopUp("SubscribePopup");
-            }
+            //if ($.cookie("disablePopup") == null) {
+            //    OpenPopUp("SubscribePopup");
+            //}
         });
 
     function GetProductDetail(ProductId,PartialViewName) {

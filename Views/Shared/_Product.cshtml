@@ -11,13 +11,14 @@
         </div>
     </div>
     <div class="product_content">
+
         <div class="product_ratting">
             <div id="ratingStars_@Model.ProductID"></div>
         </div>
         <h3><a href='@Url.Action("Index", "ProductDetails", new { P = Helper.Security.Encrypt(Model.ProductID.ToString()) })'>@Model.Product</a></h3>
         <div class="product_price">
             @{
-                string unit =!Model.Unit.IsNull() ? "/" + Model.Unit : "";
+                string unit = !Model.Unit.IsNull() ? "/" + Model.Unit : "";
             }
             <span class="current_price">@Helper.SpartansHelper.FormatCurrencyDisplay(Model.Price.ToString())@unit</span>
         </div>
@@ -27,9 +28,9 @@
         <div class="available">
             <div class="available_line d-flex flex-row justify-content-start">
                 <div class="available_title">Available: <span>@Model.CurrentQty</span></div>
-                <div class="sold_title ml-auto">Sold: <span>@Model.SalesQty</span></div>
+                <div style="display:none;" class="sold_title ml-auto">Sold: <span>@Model.SalesQty</span></div>
             </div>
-            <div class="available_bar"><span style="width:@Model.CurerntStockPercent%"></span></div>
+            <div class="available_bar"><span style="display:none;width:@Model.CurerntStockPercent%"></span></div>
         </div>
         <div class="product_action">
             <ul>
@@ -52,9 +53,10 @@
             rating: @Model.Rating > 0 ? @Model.Rating : 0,
             starWidth: "15px",
             onSet: function (rating, rateYoInstance) {
-               // UpdateRating(@Model.ProductID, rating);
-                OpenPopUp("RatingPopup");
-            }
+                $("#ProductId").val(@Model.ProductID);
+                $("#Rating").val(rating);
+                    OpenPopUp("RatingPopup");
+                }
         });
     });
 </script>
